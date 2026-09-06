@@ -6,7 +6,7 @@ class EmbeddingService:
         self.model=SentenceTransformer(
             "sentence-transfromers/all-MiniLM-L6-v2"
         )
-    def embed(self,text:str)->np.ndarry:
+    def embed(self,text:list[str])->np.ndarry:
         return self.model.encode(
             text,
             normalize_embedding=True
