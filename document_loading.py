@@ -1,4 +1,3 @@
-from pathlib import path
 from pypdf import PdfReader
 
 class DocumentLoader:
