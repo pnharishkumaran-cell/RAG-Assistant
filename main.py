@@ -19,8 +19,8 @@ class ragassistant:
         query_embedding=self.embedding_service.embed([query])[0]
 
         results=self.vector_store.search(query_embedding,top_k)
-        context=self.context_builder(results)
-        answers=self.llm.generate(question,context)
+        context=self.context_builder.build(results)
+        answers=self.llm.generate(query,context)
         return answers
 
 if __name__ =="__main__":
@@ -28,7 +28,7 @@ if __name__ =="__main__":
     data_folder=Path("data")
     for file_path in data_folder.iterdir():
         if file_path.is_file() and file_path.suffix.lower() in [".pdf", ".docx", ".txt"]:
-            app.ingest_document(str(file_path))
+            app.ingestion.ingest(str(file_path))
     question=input("Ask a question")
     answer=app.ask(question)
     print("\nAnswer")

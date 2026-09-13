@@ -20,5 +20,5 @@ class VectorStore:
     def search(self,query_embedding,top_k:int=5):
         return self.collection.query(
             query_embeddings=[query_embedding.tolist()],
-            n_rresult=top_k
+            n_results=top_k
         )
